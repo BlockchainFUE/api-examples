@@ -6,6 +6,50 @@ date: "2019-10-30 18:57"
 
 # Documentación del API
 
+<!--ts-->
+   * [Documentación del API](#documentación-del-api)
+      * [Introducción](#introducción)
+      * [Acceso al API](#acceso-al-api)
+         * [Credenciales (funcion <strong>keypair</strong>)](#credenciales-funcion-keypair)
+      * [¿Como obtengo una identidad?](#como-obtengo-una-identidad)
+            * [Método <strong>GET</strong>](#método-get)
+            * [Método <strong>POST</strong>](#método-post)
+      * [Llamando al API](#llamando-al-api)
+         * [URL](#url)
+         * [Parámetros](#parámetros)
+         * [Respuesta](#respuesta)
+         * [Cabeceras necesarias](#cabeceras-necesarias)
+            * [Autenticación](#autenticación)
+            * [Formato](#formato)
+            * [Tipo de RED](#tipo-de-red)
+            * [Aplicación](#aplicación)
+      * [Lenguajes soportados](#lenguajes-soportados)
+      * [CRAB — Create, Retrieve, Append, Burn](#crabcreate-retrieve-append-burn)
+         * [CREATE](#create)
+         * [RETRIEVE](#retrieve)
+         * [APPEND](#append)
+         * [BURN](#burn)
+      * [Funciones del API](#funciones-del-api)
+         * [status](#status)
+            * [URL](#url-1)
+            * [Parametros](#parametros)
+            * [Ejemplo](#ejemplo)
+            * [Respuesta](#respuesta-1)
+         * [función keypair](#función-keypair)
+            * [URL](#url-2)
+            * [Parametros](#parametros-1)
+            * [Ejemplo](#ejemplo-1)
+            * [Respuesta](#respuesta-2)
+         * [función](#función)
+            * [URL](#url-3)
+            * [Parámetros](#parámetros-1)
+            * [Ejemplo](#ejemplo-2)
+            * [Respuesta](#respuesta-3)
+
+<!-- Added by: rampa, at: mié oct 30 23:28:57 CET 2019 -->
+
+<!--te-->
+
 ## Introducción
 
 Esta es la documentación en Español para la utilización del API REST de [BlockchainFUE](http://blockchainfue.com "BlockchainFUE"). Este API le permite realizar sus propias aplicaciones de blockchain integrando nuestros servicios de creación y recuperación de activos y tokens.
