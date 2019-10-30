@@ -98,11 +98,29 @@ cabecera          | tipo |valor
 ## Lenguajes soportados
 Para hablar con el API de BlockchainFUE puede utilizar cualquier lenguaje de programación que soporte la realización de llamadas **HTTPS**, así como el proceso de matrices en formato **JSON** o **XML**, es decir cualquiera de los lenguajes modernos e incluso muchos de los antiguos.
 
+##CRAB — Create, Retrieve, Append, Burn
+
+En las bases de datos actuales, estamos familiarizados con las iniciales  CRUD. CRUD es la abreviatura de Crear, Leer, Actualizar  Eliminar (Create, Read, Update,Delete en inglés). Estas son las operaciones básicas de un almacén de datos persistentes.
+BigchainDB se comporta como una base de datos, pero al estar basada en blockchain, no es posible actualizar ni borrar (esto en el . 
+
+### CREATE
+Podemos crear activos y tokens (Básicamente es lo mismo, pero un activo no es divisible y un token sí). Para crear utilizaremos el método POST de las funciones.
+### RETRIEVE
+Podemos consultar el activo creado con anterioridad. Para consultar utilizaremos el método GET de las funciones.
+### APPEND
+Mediante sucesivas transferencias del activo (podemos transferirlo  a nosotros mismos) podemos añadir metadatos al activo. Para añadir metadatos (actualizar), utilizaremos el método PUT de las funciones.
+### BURN
+El fin de vida de un activo nunca será el borrado. Será transferido a una identidad con clave privada aleatoria, Una vez hecho esto, nunca más podrá ser transferido al no ser sus poseedores. Para quemar un activo, utilizaremos el método DELETE de las funciones.
+
+
+
+
 ## Funciones del API
 
 A continuación explicamos cada uno de los recursos y sus parámetros.
 
 ### status
+Devuelve el estado de los servicios del API y la hora actual del nodo (sincronizada por **NTP**)
 #### URL
 https://api.blockchainfue.com/api/status
 #### Parametros
@@ -121,5 +139,5 @@ curl -v -H "X-Public-Key: 7u5gdTkzX39WDHMyCGhZcHUvmWw2wxXJUNVP3ohGxmWu"\
 ```json
 {"ok":true,"msg":"API services UP","ts":1572463033445}
 ```
-
+### keypair
 
