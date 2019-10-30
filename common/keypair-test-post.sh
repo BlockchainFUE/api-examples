@@ -1,7 +1,6 @@
 #!/bin/bash
 #
-# Ejemplo de escritura 
-# keypair generado con: https://api.blockchainfue.com/api/keypair/pericoeldelospalotes/1234
+# Ejemplo de peticion de claves POST
 #
 SEED=pericodelospalotes
 PIN=1234
