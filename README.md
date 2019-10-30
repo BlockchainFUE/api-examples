@@ -95,3 +95,31 @@ cabecera          | tipo |valor
 
 
 
+## Lenguajes soportados
+Para hablar con el API de BlockchainFUE puede utilizar cualquier lenguaje de programación que soporte la realización de llamadas **HTTPS**, así como el proceso de matrices en formato **JSON** o **XML**, es decir cualquiera de los lenguajes modernos e incluso muchos de los antiguos.
+
+## Funciones del API
+
+A continuación explicamos cada uno de los recursos y sus parámetros.
+
+### status
+#### URL
+https://api.blockchainfue.com/api/status
+#### Parametros
+Este método no necesita parámetros.
+#### Ejemplo
+```bash
+curl -v -H "X-Public-Key: 7u5gdTkzX39WDHMyCGhZcHUvmWw2wxXJUNVP3ohGxmWu"\
+        -H "X-Private-Key: GAQZY4zLw86aiHPA2oLDukSHXhyBnpBVDa5YzMfqa1wT"\
+        -H "X-Api-Network: test"\
+        -H "X-App-Name: hackaton-boot-01" \
+        -H "Content-Type: application/json"\
+        -H "Accept: application/json"\
+         https://api.blockchainfue.com/api/status
+```
+#### Respuesta
+```json
+{"ok":true,"msg":"API services UP","ts":1572463033445}
+```
+
+
