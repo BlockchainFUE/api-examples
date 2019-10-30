@@ -98,10 +98,10 @@ cabecera          | tipo |valor
 ## Lenguajes soportados
 Para hablar con el API de BlockchainFUE puede utilizar cualquier lenguaje de programación que soporte la realización de llamadas **HTTPS**, así como el proceso de matrices en formato **JSON** o **XML**, es decir cualquiera de los lenguajes modernos e incluso muchos de los antiguos.
 
-##CRAB — Create, Retrieve, Append, Burn
+## CRAB — Create, Retrieve, Append, Burn
 
 En las bases de datos actuales, estamos familiarizados con las iniciales  CRUD. CRUD es la abreviatura de Crear, Leer, Actualizar  Eliminar (Create, Read, Update,Delete en inglés). Estas son las operaciones básicas de un almacén de datos persistentes.
-BigchainDB se comporta como una base de datos, pero al estar basada en blockchain, no es posible actualizar ni borrar (esto en el . 
+BlockchainFUE se comporta como una base de datos, pero al estar basada en blockchain, no es posible actualizar ni borrar (esto en el . 
 
 ### CREATE
 Podemos crear activos y tokens (Básicamente es lo mismo, pero un activo no es divisible y un token sí). Para crear utilizaremos el método POST de las funciones.
@@ -122,7 +122,7 @@ A continuación explicamos cada uno de los recursos y sus parámetros.
 ### status
 Devuelve el estado de los servicios del API y la hora actual del nodo (sincronizada por **NTP**)
 #### URL
-https://api.blockchainfue.com/api/status
+[GET] https://api.blockchainfue.com/api/status
 #### Parametros
 Este método no necesita parámetros.
 #### Ejemplo
@@ -139,5 +139,64 @@ curl -v -H "X-Public-Key: 7u5gdTkzX39WDHMyCGhZcHUvmWw2wxXJUNVP3ohGxmWu"\
 ```json
 {"ok":true,"msg":"API services UP","ts":1572463033445}
 ```
-### keypair
+### función keypair
+#### URL
+[GET] https://api.blockchainfue.com/api/status
+[POST] https://api.blockchainfue.com/api/status
+#### Parametros
+párametro       | tipo |descripción
+----------------|--------|---------------
+**seed**	| string |Algo que podemos recordar fácilmente y que puede ser conocida por las dos partes. Se utiliza como semilla para el generador de números aleatorios.
+**pin**	        | string |Algo que solo nosotros sabemos. Aunque el nombre sugiera lo contrario, puede ser alfanumerico de cualquier longitud, pero ojo, no se almacena en ningún sitio. 
 
+Olvidar cualquiera de los dos parametros, llevara a perder todos los activos de esa identidad….
+
+
+#### Ejemplo
+Método **GET**
+```bash
+#!/bin/bash
+#
+# Ejemplo de obtencion de tokens, metodo GET
+#
+SEED=pericoeldelospalotes
+PIN=1234
+curl -v -H "Content-Type: application/json"\
+        -H "Accept: application/json"\
+         https://api.blockchainfue.com/api/keypair/$SEED/$PIN
+```
+
+Método **POST**
+```bash
+#!/bin/bash
+#
+# Ejemplo de peticion de claves POST
+#
+SEED=pericodelospalotes
+PIN=1234
+curl -v -H "Content-Type: application/json"\
+        -X POST --data "{\"seed\":\"$SEED\",\"pin\":\"$PIN\"}"\
+         https://api.blockchainfue.com/api/keypair
+
+```
+#### Respuesta
+
+```json
+{"ok":true,
+ "msg":"Generated keypair",
+ "pub":"DQnEiE3NTFj2GwMCCho3eDxLuAN62zv2LLNxHbDDNZeE",
+ "pvt":"E2XxnGrHnujww2oeYyL3WhQJ3QUzKifbTmKLyGeibETM"
+ }
+```
+
+
+
+### función
+#### URL
+#### Parámetros
+#### Ejemplo
+```bash
+```
+#### Respuesta
+```json
+```
