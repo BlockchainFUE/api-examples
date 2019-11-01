@@ -30,23 +30,41 @@ date: "2019-10-30 18:57"
          * [APPEND](#append)
          * [BURN](#burn)
       * [Funciones del API](#funciones-del-api)
-         * [status](#status)
+         * [función /api/status](#función-apistatus)
             * [URL](#url-1)
             * [Parametros](#parametros)
             * [Ejemplo](#ejemplo)
             * [Respuesta](#respuesta-1)
-         * [función keypair](#función-keypair)
+         * [función /api/keypair](#función-apikeypair)
             * [URL](#url-2)
             * [Parametros](#parametros-1)
             * [Ejemplo](#ejemplo-1)
             * [Respuesta](#respuesta-2)
-         * [función](#función)
+         * [función /api/asset/](#función-apiasset)
+         * [función /api/asset/:id](#función-apiassetid)
             * [URL](#url-3)
-            * [Parámetros](#parámetros-1)
+            * [Parametros](#parametros-2)
             * [Ejemplo](#ejemplo-2)
             * [Respuesta](#respuesta-3)
+            * [URL](#url-4)
+            * [Parámetros](#parámetros-1)
+            * [Ejemplo](#ejemplo-3)
+            * [Respuesta](#respuesta-4)
+            * [URL](#url-5)
+            * [Parámetros](#parámetros-2)
+            * [Ejemplo](#ejemplo-4)
+            * [Respuesta](#respuesta-5)
+            * [URL](#url-6)
+            * [Parámetros](#parámetros-3)
+            * [Ejemplo](#ejemplo-5)
+            * [Respuesta](#respuesta-6)
+         * [función](#función)
+            * [URL](#url-7)
+            * [Parámetros](#parámetros-4)
+            * [Ejemplo](#ejemplo-6)
+            * [Respuesta](#respuesta-7)
 
-<!-- Added by: rampa, at: mié oct 30 23:28:57 CET 2019 -->
+<!-- Added by: rampa, at: vie nov  1 13:36:45 CET 2019 -->
 
 <!--te-->
 
@@ -145,7 +163,7 @@ Para hablar con el API de BlockchainFUE puede utilizar cualquier lenguaje de pro
 ## CRAB — Create, Retrieve, Append, Burn
 
 En las bases de datos actuales, estamos familiarizados con las iniciales  CRUD. CRUD es la abreviatura de Crear, Leer, Actualizar  Eliminar (Create, Read, Update,Delete en inglés). Estas son las operaciones básicas de un almacén de datos persistentes.
-BlockchainFUE se comporta como una base de datos, pero al estar basada en blockchain, no es posible actualizar ni borrar (esto en el . 
+BlockchainFUE se comporta como una base de datos, pero al estar basada en blockchain, no es posible actualizar ni borrar (esto en el .
 
 ### CREATE
 Podemos crear activos y tokens (Básicamente es lo mismo, pero un activo no es divisible y un token sí). Para crear utilizaremos el método POST de las funciones.
@@ -163,7 +181,7 @@ El fin de vida de un activo nunca será el borrado. Será transferido a una iden
 
 A continuación explicamos cada uno de los recursos y sus parámetros.
 
-### status
+### función /api/status
 Devuelve el estado de los servicios del API y la hora actual del nodo (sincronizada por **NTP**)
 #### URL
 [GET] https://api.blockchainfue.com/api/status
@@ -183,26 +201,27 @@ curl -v -H "X-Public-Key: 7u5gdTkzX39WDHMyCGhZcHUvmWw2wxXJUNVP3ohGxmWu"\
 ```json
 {"ok":true,"msg":"API services UP","ts":1572463033445}
 ```
-### función keypair
+### función /api/keypair
 #### URL
+```
 [GET] https://api.blockchainfue.com/api/status
+```
+o
+```
 [POST] https://api.blockchainfue.com/api/status
+```
 #### Parametros
 párametro       | tipo |descripción
 ----------------|--------|---------------
 **seed**	| string |Algo que podemos recordar fácilmente y que puede ser conocida por las dos partes. Se utiliza como semilla para el generador de números aleatorios.
-**pin**	        | string |Algo que solo nosotros sabemos. Aunque el nombre sugiera lo contrario, puede ser alfanumerico de cualquier longitud, pero ojo, no se almacena en ningún sitio. 
+**pin**	        | string |Algo que solo nosotros sabemos. Aunque el nombre sugiera lo contrario, puede ser alfanumerico de cualquier longitud, pero ojo, no se almacena en ningún sitio.
 
-Olvidar cualquiera de los dos parametros, llevara a perder todos los activos de esa identidad….
+Olvidar cualquiera de los dos parámetros, llevara a perder todos los activos de esa identidad….
 
 
 #### Ejemplo
 Método **GET**
 ```bash
-#!/bin/bash
-#
-# Ejemplo de obtencion de tokens, metodo GET
-#
 SEED=pericoeldelospalotes
 PIN=1234
 curl -v -H "Content-Type: application/json"\
@@ -212,10 +231,7 @@ curl -v -H "Content-Type: application/json"\
 
 Método **POST**
 ```bash
-#!/bin/bash
-#
-# Ejemplo de peticion de claves POST
-#
+
 SEED=pericodelospalotes
 PIN=1234
 curl -v -H "Content-Type: application/json"\
@@ -233,6 +249,66 @@ curl -v -H "Content-Type: application/json"\
  }
 ```
 
+### función /api/asset/
+Es la encargada de crear, transferir (modificar) y quemar **ACTIVOS**.
+
+
+
+### función /api/asset/:id
+consultar **ACTIVOS** mediante su identificación.
+
+#### URL
+```
+[GET] https://api.blockchainfue.com/api/asset
+```
+#### Parametros
+párametro       | tipo |descripción
+----------------|--------|---------------
+**:id**	| string |id del activo obtenido durante su creación.
+
+#### Ejemplo
+```bash
+```
+#### Respuesta
+```json
+```
+
+#### URL
+```
+[POST] https://api.blockchainfue.com/api/asset
+```
+
+#### Parámetros
+#### Ejemplo
+```bash
+```
+#### Respuesta
+```json
+```
+
+#### URL
+```
+[PUT] https://api.blockchainfue.com/api/asset
+```
+#### Parámetros
+#### Ejemplo
+```bash
+```
+#### Respuesta
+```json
+```
+
+#### URL
+```
+[DELETE] https://api.blockchainfue.com/api/asset
+```
+#### Parámetros
+#### Ejemplo
+```bash
+```
+#### Respuesta
+```json
+```
 
 
 ### función
