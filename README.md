@@ -41,30 +41,32 @@ date: "2019-10-30 18:57"
             * [Ejemplo](#ejemplo-1)
             * [Respuesta](#respuesta-2)
          * [función /api/asset/](#función-apiasset)
-         * [función /api/asset/:id](#función-apiassetid)
             * [URL](#url-3)
-            * [Parametros](#parametros-2)
+            * [Parámetros](#parámetros-1)
             * [Ejemplo](#ejemplo-2)
             * [Respuesta](#respuesta-3)
             * [URL](#url-4)
-            * [Parámetros](#parámetros-1)
+            * [Parámetros](#parámetros-2)
+            * [Parametros](#parametros-2)
             * [Ejemplo](#ejemplo-3)
             * [Respuesta](#respuesta-4)
             * [URL](#url-5)
-            * [Parámetros](#parámetros-2)
+            * [Parámetros](#parámetros-3)
             * [Ejemplo](#ejemplo-4)
             * [Respuesta](#respuesta-5)
+         * [función /api/asset/:id](#función-apiassetid)
             * [URL](#url-6)
-            * [Parámetros](#parámetros-3)
+            * [Parametros](#parametros-3)
             * [Ejemplo](#ejemplo-5)
             * [Respuesta](#respuesta-6)
+            * [Campos en la respuesta.](#campos-en-la-respuesta)
          * [función](#función)
             * [URL](#url-7)
             * [Parámetros](#parámetros-4)
             * [Ejemplo](#ejemplo-6)
             * [Respuesta](#respuesta-7)
 
-<!-- Added by: rampa, at: vie nov  1 13:36:45 CET 2019 -->
+<!-- Added by: rampa, at: vie nov  1 21:22:41 CET 2019 -->
 
 <!--te-->
 
@@ -204,11 +206,11 @@ curl -v -H "X-Public-Key: 7u5gdTkzX39WDHMyCGhZcHUvmWw2wxXJUNVP3ohGxmWu"\
 ### función /api/keypair
 #### URL
 ```
-[GET] https://api.blockchainfue.com/api/status
+[GET] https://api.blockchainfue.com/api/keypair
 ```
 o
 ```
-[POST] https://api.blockchainfue.com/api/status
+[POST] https://api.blockchainfue.com/api/keypair
 ```
 #### Parametros
 párametro       | tipo |descripción
@@ -250,9 +252,97 @@ curl -v -H "Content-Type: application/json"\
 ```
 
 ### función /api/asset/
-Es la encargada de crear, transferir (modificar) y quemar **ACTIVOS**.
 
+el método **POST** se usa para crear **ACTIVOS**.
 
+#### URL
+```
+[POST] https://api.blockchainfue.com/api/asset
+```
+
+#### Parámetros
+Campo       | Tipo    |Descripción
+------------|---------|---------------
+**net**	    | string  | Red donde se encuentra el activo.
+**msg**     | string  | Mensaje
+**asset**	  | JSON    | Estructura conteniendo los datos del activo.
+
+#### Ejemplo
+```bash
+curl -v -H "X-Public-Key: 7u5gdTkzX39WDHMyCGhZcHUvmWw2wxXJUNVP3ohGxmWu"\
+        -H "X-Private-Key: GAQZY4zLw86aiHPA2oLDukSHXhyBnpBVDa5YzMfqa1wT"\
+        -H "X-Api-Network: test"\
+        -H "X-App-Name: hackaton-boot-01" \
+        -H "Content-Type: application/json"\
+        -H "Accept: application/json"\
+        -X POST --data "{\"asset\":{\"type\":\"test-asset\",\"name\":\"test001\",\"data\":{\"test\":true,\"app\":\"curl\"}}}"\
+         https://api.blockchainfue.com/api/asset
+```
+#### Respuesta
+```json
+{"ok":true,"msg":"Asset created","net":"test","id":"ddb18379fae0550c2385245613b2b595c279848526e1fcc4729c16c93c743e26"}
+```
+
+Para transferir (y modificar= **ACTIVOS** se usa el método **PUT**. El activo pasara a la nueva identidad (que puede ser nuestra propia clave pública) y se añadira la informacion contenida en el parametro **metadata**
+
+#### URL
+```
+[PUT] https://api.blockchainfue.com/api/asset/:id
+```
+#### Parámetros
+#### Parametros
+párametro    | tipo    |descripción
+-------------|---------|---------------
+**to**	     | string  | identidad a la que se transfiere el activo.
+**metadata** | JSON    | estructura JSON a escribir.
+
+#### Ejemplo
+```bash
+curl -v -H "X-Public-Key: 7u5gdTkzX39WDHMyCGhZcHUvmWw2wxXJUNVP3ohGxmWu"\
+        -H "X-Private-Key: GAQZY4zLw86aiHPA2oLDukSHXhyBnpBVDa5YzMfqa1wT"\
+        -H "X-Api-Network: test"\
+        -H "X-App-Name: hackaton-boot-01" \
+        -H "Content-Type: application/json"\
+        -X PUT --data "{\"to\":\"ERJmMB4kdxmCEm44NyBYify3r8tcHQ8zzMruNjBHtgdq\",\"metadata\":{\"test\":true,\"app\":\"curl\"}}"\
+         https://api.blockchainfue.com/api/asset/accdeaf6a461daff042bec6efb00338a5653ad55af3ed688484feea34cd27df4
+```
+
+#### Respuesta
+```json
+{"ok":true,"net":"test","msg":"Asset updated","id":"5ed46969cf66df770acb3d63c7479ca7f1edb6981f72f303d4ba789f88da5615"}
+```
+
+Para **Quemar** activos (no se borran, pero pasan a otra identidad de la cual nunca se podran sacar) se utiliza el método **DELETE**.
+
+#### URL
+```
+[DELETE] https://api.blockchainfue.com/api/asset/:id
+```
+#### Parámetros
+párametro   | tipo    |descripción
+------------|---------|---------------
+**:id**	    | string  | id del activo obtenido durante su creación.
+
+#### Ejemplo
+```bash
+curl -v -H "X-Public-Key: 7u5gdTkzX39WDHMyCGhZcHUvmWw2wxXJUNVP3ohGxmWu"\
+        -H "X-Private-Key: GAQZY4zLw86aiHPA2oLDukSHXhyBnpBVDa5YzMfqa1wT"\
+        -H "X-Api-Network: test"\
+        -H "X-App-Name: hackaton-boot-01" \
+        -H "Content-Type: application/json"\
+        -X DELETE \
+         https://api.blockchainfue.com/api/asset/0285d55a8ffc9b1fdf7b9af07fe930242b8a6eec8da4ceb0fc8b64f846775c46
+```
+#### Respuesta
+```json
+{
+      "ok":  true,
+      "net": "test",
+      "msg": "Asset burnt",
+      "id": "0285d55a8ffc9b1fdf7b9af07fe930242b8a6eec8da4ceb0fc8b64f846775c46"}
+    )
+
+```
 
 ### función /api/asset/:id
 consultar **ACTIVOS** mediante su identificación.
@@ -262,53 +352,54 @@ consultar **ACTIVOS** mediante su identificación.
 [GET] https://api.blockchainfue.com/api/asset
 ```
 #### Parametros
-párametro       | tipo |descripción
-----------------|--------|---------------
-**:id**	| string |id del activo obtenido durante su creación.
+párametro   | tipo    |descripción
+------------|---------|---------------
+**:id**	    | string  | id del activo obtenido durante su creación.
+**history** | boolean | obtiene un historial del activo.
 
 #### Ejemplo
 ```bash
+curl -v -H "X-Public-Key: 7u5gdTkzX39WDHMyCGhZcHUvmWw2wxXJUNVP3ohGxmWu"\
+        -H "X-Private-Key: GAQZY4zLw86aiHPA2oLDukSHXhyBnpBVDa5YzMfqa1wT"\
+        -H "X-Api-Network: test"\
+        -H "X-App-Name: hackaton-boot-01" \
+        -H "Content-Type: application/json"\
+        https://api.blockchainfue.com/api/asset/accdeaf6a461daff042bec6efb00338a5653ad55af3ed688484feea34cd27df4
 ```
 #### Respuesta
 ```json
+{"ok":true,
+ "net":"test",
+ "msg":"Your asset",
+ "asset":
+   {"id":"accdeaf6a461daff042bec6efb00338a5653ad55af3ed688484feea34cd27df4",
+    "data":
+    {"test":true,
+      "app":"curl",
+      "apimeta":
+        {"type":"bcfapi:hackaton-boot-01:test-asset",
+         "token":false,
+         "name":"test001",
+         "action":"CREATE",
+         "creator":"7u5gdTkzX39WDHMyCGhZcHUvmWw2wxXJUNVP3ohGxmWu",
+         "when":1572433587642
+       }
+    },
+    "history":[]
+  }
+}
 ```
+#### Campos en la respuesta.
 
-#### URL
-```
-[POST] https://api.blockchainfue.com/api/asset
-```
+Campo       | Tipo    |Descripción
+------------|---------|---------------
+**net**	    | string  | Red donde se encuentra el activo.
+**msg**     | string  | Mensaje
+**asset**	  | JSON    | Estructura conteniendo los datos del activo.
 
-#### Parámetros
-#### Ejemplo
-```bash
-```
-#### Respuesta
-```json
-```
 
-#### URL
-```
-[PUT] https://api.blockchainfue.com/api/asset
-```
-#### Parámetros
-#### Ejemplo
-```bash
-```
-#### Respuesta
-```json
-```
 
-#### URL
-```
-[DELETE] https://api.blockchainfue.com/api/asset
-```
-#### Parámetros
-#### Ejemplo
-```bash
-```
-#### Respuesta
-```json
-```
+
 
 
 ### función
