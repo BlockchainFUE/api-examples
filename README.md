@@ -72,7 +72,7 @@ date: "2019-10-30 18:57"
 
 ## Introducción
 
-Esta es la documentación en Español para la utilización del API REST de [BlockchainFUE](http://blockchainfue.com "BlockchainFUE"). Este API le permite realizar sus propias aplicaciones de blockchain integrando nuestros servicios de creación y recuperación de activos y tokens.
+Esta es la documentación en español para la utilización del API REST de [BlockchainFUE](http://blockchainfue.com "BlockchainFUE"). Este API le permite realizar sus propias aplicaciones de blockchain integrando nuestros servicios de creación y recuperación de activos y tokens.
 
 El API se presenta como un conjunto de servicios **RESTFUL** que pueden ser utilizados mediante protocolo HTTP por cualquier tipo de aplicación capaz de hacer llamadas HTTP con métodos **GET**, **POST**, **PUT**, **DELETE**...
 
@@ -128,7 +128,7 @@ Todas las llamadas al API se hacen mediante la misma URL base:
 https://api.blockchainfue.com/api
 
 ### Parámetros
-Todos los parámetros, cuando se trate de un método POST, serán enviados en formato **JSON** o **XML** en el **BODY** de la petición, indicando el formato en la cabecera **Content-Type**. Por tanto lo primero que debe codificar es una función que sea capaz de enviar peticiones mediante método **POST** adjuntando un arreglo en formato **JSON/XML** en el cuerpo de la misma.
+Todos los parámetros, cuando se trate de un método POST, serán enviados en formato **JSON** o **XML** en el **BODY** de la petición, indicando el formato en la cabecera **Content-Type**. Por tanto, lo primero que debe codificar es una función que sea capaz de enviar peticiones mediante método **POST** adjuntando un arreglo en formato **JSON/XML** en el cuerpo de la misma.
 
 ### Respuesta
 Asimismo, cuando la respuesta necesite incluir información, esta será enviada en formato **JSON** o **XML** e incluida dentro del cuerpo de dicha respuesta.
@@ -164,15 +164,15 @@ Para hablar con el API de BlockchainFUE puede utilizar cualquier lenguaje de pro
 
 ## CRAB — Create, Retrieve, Append, Burn
 
-En las bases de datos actuales, estamos familiarizados con las iniciales  CRUD. CRUD es la abreviatura de Crear, Leer, Actualizar  Eliminar (Create, Read, Update,Delete en inglés). Estas son las operaciones básicas de un almacén de datos persistentes.
+En las bases de datos actuales, estamos familiarizados con las iniciales  CRUD. CRUD es la abreviatura de Crear, Leer, Actualizar  Eliminar (Create, Read, Update, Delete en inglés). Estas son las operaciones básicas de un almacén de datos persistentes.
 BlockchainFUE se comporta como una base de datos, pero al estar basada en blockchain, no es posible actualizar ni borrar (esto en el .
 
 ### CREATE
-Podemos crear activos y tokens (Básicamente es lo mismo, pero un activo no es divisible y un token sí). Para crear utilizaremos el método POST de las funciones.
+Podemos crear activos y tokens (básicamente es lo mismo, pero un activo no es divisible y un token sí). Para crear utilizaremos el método POST de las funciones.
 ### RETRIEVE
 Podemos consultar el activo creado con anterioridad. Para consultar utilizaremos el método GET de las funciones.
 ### APPEND
-Mediante sucesivas transferencias del activo (podemos transferirlo  a nosotros mismos) podemos añadir metadatos al activo. Para añadir metadatos (actualizar), utilizaremos el método PUT de las funciones.
+Mediante sucesivas transferencias del activo (podemos transferirlo a nosotros mismos) podemos añadir metadatos al activo. Para añadir metadatos (actualizar), utilizaremos el método PUT de las funciones.
 ### BURN
 El fin de vida de un activo nunca será el borrado. Será transferido a una identidad con clave privada aleatoria, Una vez hecho esto, nunca más podrá ser transferido al no ser sus poseedores. Para quemar un activo, utilizaremos el método DELETE de las funciones.
 
@@ -218,7 +218,7 @@ párametro       | tipo |descripción
 **seed**	| string |Algo que podemos recordar fácilmente y que puede ser conocida por las dos partes. Se utiliza como semilla para el generador de números aleatorios.
 **pin**	        | string |Algo que solo nosotros sabemos. Aunque el nombre sugiera lo contrario, puede ser alfanumerico de cualquier longitud, pero ojo, no se almacena en ningún sitio.
 
-Olvidar cualquiera de los dos parámetros, llevara a perder todos los activos de esa identidad….
+Olvidar cualquiera de los dos parámetros, llevará a perder todos los activos de esa identidad.
 
 
 #### Ejemplo
