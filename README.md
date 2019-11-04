@@ -78,7 +78,7 @@ El API se presenta como un conjunto de servicios **RESTFUL** que pueden ser util
 
 ## Acceso al API
 ### Credenciales (funcion **keypair**)
-Tal y como hemos mencionado antes necesitará incluir sus credenciales en cada llamada al API. Al tratarse de un sistema **RESTFUL**, no se mantienen estados entre las llamadas y por tanto tampoco hay una cookie que pueda mantener una autenticación de sesión.
+Tal y como hemos mencionado antes, necesitará incluir sus credenciales en cada llamada al API. Al tratarse de un sistema **RESTFUL**, no se mantienen estados entre las llamadas y por tanto tampoco hay una cookie que pueda mantener una autenticación de sesión.
 
 Para enviar las credenciales se deben utilizar dos cabeceras en la petición:
 
@@ -88,11 +88,11 @@ cabecera        | valor
 **X-Private-Key**	| Clave privada de la identidad
 
 ## ¿Como obtengo una identidad?
-Para obtener una identidad, necesita llamar a la funcion **keypair** Esta función es accesible mediante métodos **GET** y **POST**. en la llmada a esta función se requeriran dos parámetros.
+Para obtener una identidad, necesita llamar a la funcion **keypair** Esta función es accesible mediante métodos **GET** y **POST**. en la llamada a esta función se requeriran dos parámetros.
 
 párametro       | tipo |descripción
 ----------------|------|---------------
-**seed**	| string |texto complejo pero fácil de recordar (por ejemplo DNI,una frase,etc)
+**seed**	| string |texto complejo pero fácil de recordar (por ejemplo DNI, una frase, etc.)
 **pin**	  | string |texto secreto que se puede pedir al usuario en el fúturo para rehacer su identidad. **NO DEBE OLVIDARLO**
 
 
@@ -131,7 +131,7 @@ https://api.blockchainfue.com/api
 Todos los parámetros, cuando se trate de un método POST, serán enviados en formato **JSON** o **XML** en el **BODY** de la petición, indicando el formato en la cabecera **Content-Type**. Por tanto lo primero que debe codificar es una función que sea capaz de enviar peticiones mediante método **POST** adjuntando un arreglo en formato **JSON/XML** en el cuerpo de la misma.
 
 ### Respuesta
-Asimismo cuando la respuesta necesite incluir información, esta será enviada en formato **JSON** o **XML** e incluida dentro del cuerpo de dicha respuesta.
+Asimismo, cuando la respuesta necesite incluir información, esta será enviada en formato **JSON** o **XML** e incluida dentro del cuerpo de dicha respuesta.
 
 ### Cabeceras necesarias
 #### Autenticación
@@ -283,7 +283,7 @@ curl -v -H "X-Public-Key: 7u5gdTkzX39WDHMyCGhZcHUvmWw2wxXJUNVP3ohGxmWu"\
 {"ok":true,"msg":"Asset created","net":"test","id":"ddb18379fae0550c2385245613b2b595c279848526e1fcc4729c16c93c743e26"}
 ```
 
-Para transferir (y modificar= **ACTIVOS** se usa el método **PUT**. El activo pasara a la nueva identidad (que puede ser nuestra propia clave pública) y se añadira la informacion contenida en el parametro **metadata**
+Para transferir (y modificar) **ACTIVOS** se usa el método **PUT**. El activo pasara a la nueva identidad (que puede ser nuestra propia clave pública) y se añadira la informacion contenida en el parametro **metadata**
 
 #### URL
 ```
