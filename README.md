@@ -60,13 +60,76 @@ date: "2019-10-30 18:57"
             * [Ejemplo](#ejemplo-5)
             * [Respuesta](#respuesta-6)
             * [Campos en la respuesta.](#campos-en-la-respuesta)
-         * [función](#función)
+         * [función /api/asset/all](#función-apiassetall)
             * [URL](#url-7)
-            * [Parámetros](#parámetros-4)
+            * [Parametros](#parametros-4)
             * [Ejemplo](#ejemplo-6)
             * [Respuesta](#respuesta-7)
+            * [Campos en la respuesta.](#campos-en-la-respuesta-1)
+         * [función /api/asset/all/count](#función-apiassetallcount)
+            * [URL](#url-8)
+            * [Parametros](#parametros-5)
+            * [Ejemplo](#ejemplo-7)
+            * [Respuesta](#respuesta-8)
+            * [Campos en la respuesta.](#campos-en-la-respuesta-2)
+         * [función /api/asset/all/unspents/:id](#función-apiassetallunspentsid)
+            * [URL](#url-9)
+            * [Parametros](#parametros-6)
+            * [Ejemplo](#ejemplo-8)
+            * [Respuesta](#respuesta-9)
+         * [función /api/asset/all/unspents/all](#función-apiassetallunspentsall)
+            * [URL](#url-10)
+            * [Parametros](#parametros-7)
+            * [Ejemplo](#ejemplo-9)
+         * [función /api/asset/search](#función-apiassetsearch)
+            * [URL](#url-11)
+            * [Parametros](#parametros-8)
+            * [Ejemplo](#ejemplo-10)
+         * [función /api/token/](#función-apitoken)
+            * [URL](#url-12)
+            * [Parámetros](#parámetros-4)
+            * [URL](#url-13)
+            * [Parámetros](#parámetros-5)
+            * [Parametros](#parametros-9)
+            * [Ejemplo](#ejemplo-11)
+            * [Respuesta](#respuesta-10)
+            * [URL](#url-14)
+            * [Parámetros](#parámetros-6)
+            * [Ejemplo](#ejemplo-12)
+            * [Respuesta](#respuesta-11)
+         * [función /api/token/:id](#función-apitokenid)
+            * [URL](#url-15)
+            * [Parametros](#parametros-10)
+            * [Ejemplo](#ejemplo-13)
+            * [Respuesta](#respuesta-12)
+            * [Campos en la respuesta.](#campos-en-la-respuesta-3)
+         * [función /api/asset/all](#función-apiassetall-1)
+            * [URL](#url-16)
+            * [Parametros](#parametros-11)
+            * [Ejemplo](#ejemplo-14)
+            * [Respuesta](#respuesta-13)
+            * [Campos en la respuesta.](#campos-en-la-respuesta-4)
+         * [función /api/token/all/count](#función-apitokenallcount)
+            * [URL](#url-17)
+            * [Parametros](#parametros-12)
+            * [Ejemplo](#ejemplo-15)
+            * [Respuesta](#respuesta-14)
+            * [Campos en la respuesta.](#campos-en-la-respuesta-5)
+         * [función /api/token/all/unspents/:id](#función-apitokenallunspentsid)
+            * [URL](#url-18)
+            * [Parametros](#parametros-13)
+            * [Ejemplo](#ejemplo-16)
+            * [Respuesta](#respuesta-15)
+         * [función /api/token/all/unspents/all](#función-apitokenallunspentsall)
+            * [URL](#url-19)
+            * [Parametros](#parametros-14)
+            * [Ejemplo](#ejemplo-17)
+         * [función /api/token/search](#función-apitokensearch)
+            * [URL](#url-20)
+            * [Parametros](#parametros-15)
+            * [Ejemplo](#ejemplo-18)
 
-<!-- Added by: rampa, at: vie nov  1 21:22:41 CET 2019 -->
+<!-- Added by: rampa, at: vie nov  8 08:54:39 CET 2019 -->
 
 <!--te-->
 
@@ -397,17 +460,353 @@ Campo       | Tipo    |Descripción
 **msg**     | string  | Mensaje
 **asset**	  | JSON    | Estructura conteniendo los datos del activo.
 
+### función /api/asset/all
+consultar todos los **ACTIVOS** que pertenecen a esta aplicación e identidad.
 
-
-
-
-
-### función
 #### URL
+```
+[GET] https://api.blockchainfue.com/api/asset/all
+```
+#### Parametros
+párametro   | tipo    |descripción
+------------|---------|---------------
+**history** | boolean | obtiene un historial del activo.
+
+#### Ejemplo
+```bash
+curl -v -H "X-Public-Key: 7u5gdTkzX39WDHMyCGhZcHUvmWw2wxXJUNVP3ohGxmWu"\
+        -H "X-Private-Key: GAQZY4zLw86aiHPA2oLDukSHXhyBnpBVDa5YzMfqa1wT"\
+        -H "X-Api-Network: test"\
+        -H "X-App-Name: hackaton-boot-01" \
+        -H "Content-Type: application/json"\
+        -H "Accept: application/json"\
+        https://api.blockchainfue.com/api/asset/all
+
+```
+#### Respuesta
+```json
+{"ok":true,"net":"test","msg":"All assets, type all","assets":[{"id":"8d60959d1a8c4d7f52bf4ef7484f0cebe3471951f403fb8e550a848c80631c68","data":{"test":true,"app":"curl","apimeta":{"type":"bcfapi:development:test-asset","token":false,"name":"test001","action":"CREATE","creator":"7u5gdTkzX39WDHMyCGhZcHUvmWw2wxXJUNVP3ohGxmWu","when":1572430068645}},"history":[{"id":"8d60959d1a8c4d7f52bf4ef7484f0cebe3471951f403fb8e550a848c80631c68","type":"bcfapi:development:test-asset","token":false,"name":"test001","action":"CREATE","creator":"7u5gdTkzX39WDHMyCGhZcHUvmWw2wxXJUNVP3ohGxmWu","when":1572430068645}]},{"id":"9836f4c3edaa372fa862fe02613b6ad14477b51baab569e49a8bc27c54ae6085","data":{"test":true,"app":"curl","apimeta":{"type":"bcfapi:development:test-asset","token":false,"name":"test001","action":"CREATE","creator":"7u5gdTkzX39WDHMyCGhZcHUvmWw2wxXJUNVP3ohGxmWu","when":1572432124130}},"history":[{"id":"9836f4c3edaa372fa862fe02613b6ad14477b51baab569e49a8bc27c54ae6085","type":"bcfapi:development:test-asset","token":false,"name":"test001","action":"CREATE","creator":"7u5gdTkzX39WDHMyCGhZcHUvmWw2wxXJUNVP3ohGxmWu","when":1572432124130}]},{"id":"accdeaf6a461daff042bec6efb00338a5653ad55af3ed688484feea34cd27df4","data":{"test":true,"app":"curl","apimeta":{"type":"bcfapi:hackaton-boot-01:test-asset","token":false,"name":"test001","action":"CREATE","creator":"7u5gdTkzX39WDHMyCGhZcHUvmWw2wxXJUNVP3ohGxmWu","when":1572433587642}},"history":[{"id":"accdeaf6a461daff042bec6efb00338a5653ad55af3ed688484feea34cd27df4","type":"bcfapi:hackaton-boot-01:test-asset","token":false,"name":"test001","action":"CREATE","creator":"7u5gdTkzX39WDHMyCGhZcHUvmWw2wxXJUNVP3ohGxmWu","when":1572433587642}]},{"id":"318f384b882d6da3fdfab33bf0ba704cace1684df50bdca058aac35f41e27ea1","data":{"test":true,"app":"curl","apimeta":{"type":"bcfapi:hackaton-boot-01:test-asset","token":false,"name":"test001","action":"CREATE","creator":"7u5gdTkzX39WDHMyCGhZcHUvmWw2wxXJUNVP3ohGxmWu","when":1572612084427}},"history":[{"id":"318f384b882d6da3fdfab33bf0ba704cace1684df50bdca058aac35f41e27ea1","type":"bcfapi:hackaton-boot-01:test-asset","token":false,"name":"test001","action":"CREATE","creator":"7u5gdTkzX39WDHMyCGhZcHUvmWw2wxXJUNVP3ohGxmWu","when":1572612084427}]},{"id":"ddb18379fae0550c2385245613b2b595c279848526e1fcc4729c16c93c743e26","data":{"test":true,"app":"curl","apimeta":{"type":"bcfapi:hackaton-boot-01:test-asset","token":false,"name":"test001","action":"CREATE","creator":"7u5gdTkzX39WDHMyCGhZcHUvmWw2wxXJUNVP3ohGxmWu","when":1572638167292}},"history":[{"id":"ddb18379fae0550c2385245613b2b595c279848526e1fcc4729c16c93c743e26","type":"bcfapi:hackaton-boot-01:test-asset","token":false,"name":"test001","action":"CREATE","creator":"7u5gdTkzX39WDHMyCGhZcHUvmWw2wxXJUNVP3ohGxmWu","when":1572638167292}]},{"id":"0285d55a8ffc9b1fdf7b9af07fe930242b8a6eec8da4ceb0fc8b64f846775c46","data":{"test":true,"app":"curl","apimeta":{"type":"bcfapi:hackaton-boot-01:test-asset","token":false,"name":"test001","action":"CREATE","creator":"7u5gdTkzX39WDHMyCGhZcHUvmWw2wxXJUNVP3ohGxmWu","when":1572638745690}}
+```
+#### Campos en la respuesta.
+
+Campo       | Tipo    |Descripción
+------------|---------|---------------
+**ok**      | boolean | true si es correcto, false si no lo es.  
+**msg**     | string  | mensaje devuelto por la red.
+**net**	    | string  | Red donde se encuentra el activo.
+**msg**     | string  | Mensaje
+**assets**	| JSON    | Matriz de Estructuras **asset** conteniendo los datos de los activos.
+
+### función /api/asset/all/count
+Devuelve la cuenta de **activos** en la identidad actual.
+
+#### URL
+```
+[GET] https://api.blockchainfue.com/api/asset/all/count
+```
+#### Parametros
+párametro   | tipo    |descripción
+------------|---------|---------------
+
+#### Ejemplo
+```bash
+curl -v -H "X-Public-Key: 7u5gdTkzX39WDHMyCGhZcHUvmWw2wxXJUNVP3ohGxmWu"\
+        -H "X-Private-Key: GAQZY4zLw86aiHPA2oLDukSHXhyBnpBVDa5YzMfqa1wT"\
+        -H "X-Api-Network: test"\
+        -H "X-App-Name: hackaton-boot-01" \
+        -H "Content-Type: application/json"\
+        -H "Accept: application-json"\
+        https://api.blockchainfue.com/api/asset/all/count
+```
+#### Respuesta
+```json
+{"ok":true,"net":"test","msg":"Asset count","count":8}
+```
+#### Campos en la respuesta.
+
+Campo       | Tipo    |Descripción
+------------|---------|---------------
+**ok**      | boolean | true si es correcto, false si no lo es.  
+**net**	    | string  | Red donde se encuentra el activo.
+**msg**     | string  | Mensaje
+**count**	  | integer | Número de activos en la identidad.
+
+
+### función /api/asset/all/unspents/:id
+Devuelve los **unspents**  de un activo.
+
+#### URL
+```
+[GET] https://api.blockchainfue.com/api/asset/unspents/:id
+```
+#### Parametros
+párametro   | tipo    |descripción
+------------|---------|---------------
+**:id**	    | string  | id del activo obtenido durante su creación.
+
+#### Ejemplo
+```bash
+curl -v -H "X-Public-Key: 7u5gdTkzX39WDHMyCGhZcHUvmWw2wxXJUNVP3ohGxmWu"\
+        -H "X-Private-Key: GAQZY4zLw86aiHPA2oLDukSHXhyBnpBVDa5YzMfqa1wT"\
+        -H "X-Api-Network: test"\
+        -H "X-App-Name: hackaton-boot-01" \
+        -H "Content-Type: application/json"\
+        -H "Accept: application/json"\
+        https://api.blockchainfue.com/api/asset/unspents/8d60959d1a8c4d7f52bf4ef7484f0cebe3471951f403fb8e550a848c80631c68
+
+```
+#### Respuesta
+```json
+{"ok":true,
+ "net":"test",
+ "msg":"Your asset",
+ "asset":
+   {"id":"accdeaf6a461daff042bec6efb00338a5653ad55af3ed688484feea34cd27df4",
+    "data":
+    {"test":true,
+      "app":"curl",
+      "apimeta":
+        {"type":"bcfapi:hackaton-boot-01:test-asset",
+         "token":false,
+         "name":"test001",
+         "action":"CREATE",
+         "creator":"7u5gdTkzX39WDHMyCGhZcHUvmWw2wxXJUNVP3ohGxmWu",
+         "when":1572433587642
+       }
+    },
+    "history":[]
+  }
+}
+```
+### función /api/asset/all/unspents/all
+Devuelve los **unspents**  de todos los activos de la identidad.
+
+#### URL
+```
+[GET] https://api.blockchainfue.com/api/asset/unspents/all
+```
+#### Parametros
+párametro   | tipo    |descripción
+------------|---------|---------------
+
+#### Ejemplo
+```bash
+curl -v -H "X-Public-Key: 7u5gdTkzX39WDHMyCGhZcHUvmWw2wxXJUNVP3ohGxmWu"\
+        -H "X-Private-Key: GAQZY4zLw86aiHPA2oLDukSHXhyBnpBVDa5YzMfqa1wT"\
+        -H "X-Api-Network: test"\
+        -H "X-App-Name: hackaton-boot-01" \
+        -H "Content-Type: application/json"\
+        -H "Accept: application/json"\
+        https://api.blockchainfue.com/api/asset/unspents/all
+
+```
+### función /api/asset/search
+busca por un criterio dado
+
+#### URL
+```
+[GET] https://api.blockchainfue.com/api/asset/search/
+```
+#### Parametros
+párametro   | tipo    |descripción
+------------|---------|---------------
+**criteria**  |JSON |  Criterio de busqueda
+
+#### Ejemplo
+```bash
+curl -G -v -H "X-Public-Key: 7u5gdTkzX39WDHMyCGhZcHUvmWw2wxXJUNVP3ohGxmWu"\
+        -H "X-Private-Key: GAQZY4zLw86aiHPA2oLDukSHXhyBnpBVDa5YzMfqa1wT"\
+        -H "X-Api-Network: test"\
+        -H "X-App-Name: hackaton-boot-01" \
+        -H "Content-Type: application/json"\
+        -H "Accept: application/json"\
+        --data-urlencode "criteria={\"data.apimeta.name\":\"test001\"}" \
+        https://api.blockchainfue.com/api/asset/search
+
+```
+
+### función /api/token/
+
+el método **POST** se usa para crear **TOKENS**.
+
+#### URL
+```
+[POST] https://api.blockchainfue.com/api/token
+```
+
 #### Parámetros
+Campo       | Tipo    |Descripción
+------------|---------|---------------
+**net**	    | string  | Red donde se encuentra el activo.
+**msg**     | string  | Mensaje
+**token**	  | JSON    | Estructura conteniendo los datos del activo.
+
+
+Para transferir (y modificar) **tokens** se usa el método **PUT**. El token pasara a la nueva identidad (que puede ser nuestra propia clave pública) y se añadira la informacion contenida en el parametro **metadata**
+
+#### URL
+```
+[PUT] https://api.blockchainfue.com/api/token/:id
+```
+#### Parámetros
+#### Parametros
+párametro    | tipo    |descripción
+-------------|---------|---------------
+**to**	     | string  | identidad a la que se transfiere el activo.
+**metadata** | JSON    | estructura JSON a escribir.
+
+#### Ejemplo
+```bash
+```
+
+#### Respuesta
+```json
+```
+
+Para **Quemar** TOKENS (no se borran, pero pasan a otra identidad de la cual nunca se podran sacar) se utiliza el método **DELETE**.
+
+#### URL
+```
+[DELETE] https://api.blockchainfue.com/api/tokens/:id
+```
+#### Parámetros
+párametro   | tipo    |descripción
+------------|---------|---------------
+**:id**	    | string  | id del activo obtenido durante su creación.
+
 #### Ejemplo
 ```bash
 ```
 #### Respuesta
 ```json
+```
+
+### función /api/token/:id
+consultar **TOKENS** mediante su identificación.
+
+#### URL
+```
+[GET] https://api.blockchainfue.com/api/token
+```
+#### Parametros
+párametro   | tipo    |descripción
+------------|---------|---------------
+**:id**	    | string  | id del activo obtenido durante su creación.
+**history** | boolean | obtiene un historial del token.
+
+#### Ejemplo
+```bash
+```
+#### Respuesta
+```json
+```
+#### Campos en la respuesta.
+
+Campo       | Tipo    |Descripción
+------------|---------|---------------
+**net**	    | string  | Red donde se encuentra el activo.
+**msg**     | string  | Mensaje
+**token**	  | JSON    | Estructura conteniendo los datos del activo.
+
+### función /api/asset/all
+consultar todos los **TOKEN** que pertenecen a esta aplicación e identidad.
+
+#### URL
+```
+[GET] https://api.blockchainfue.com/api/token/all
+```
+#### Parametros
+párametro   | tipo    |descripción
+------------|---------|---------------
+**history** | boolean | obtiene un historial del activo.
+
+#### Ejemplo
+```bash
+```
+#### Respuesta
+```json
+```
+#### Campos en la respuesta.
+
+Campo       | Tipo    |Descripción
+------------|---------|---------------
+**ok**      | boolean | true si es correcto, false si no lo es.  
+**msg**     | string  | mensaje devuelto por la red.
+**net**	    | string  | Red donde se encuentra el activo.
+**msg**     | string  | Mensaje
+**assets**	| JSON    | Matriz de Estructuras **asset** conteniendo los datos de los activos.
+
+### función /api/token/all/count
+Devuelve la cuenta de **TOKENS** en la identidad actual.
+
+#### URL
+```
+[GET] https://api.blockchainfue.com/api/token/all/count
+```
+#### Parametros
+párametro   | tipo    |descripción
+------------|---------|---------------
+
+#### Ejemplo
+```bash
+```
+#### Respuesta
+```json
+```
+#### Campos en la respuesta.
+
+Campo       | Tipo    |Descripción
+------------|---------|---------------
+**ok**      | boolean | true si es correcto, false si no lo es.  
+**net**	    | string  | Red donde se encuentra el activo.
+**msg**     | string  | Mensaje
+**count**	  | integer | Número de activos en la identidad.
+
+
+### función /api/token/all/unspents/:id
+Devuelve los **unspents**  de un activo.
+
+#### URL
+```
+[GET] https://api.blockchainfue.com/api/token/unspents/:id
+```
+#### Parametros
+párametro   | tipo    |descripción
+------------|---------|---------------
+**:id**	    | string  | id del activo obtenido durante su creación.
+
+#### Ejemplo
+```bash
+```
+#### Respuesta
+```json
+```
+### función /api/token/all/unspents/all
+Devuelve los **unspents**  de todos los activos de la identidad.
+
+#### URL
+```
+[GET] https://api.blockchainfue.com/api/token/unspents/all
+```
+#### Parametros
+párametro   | tipo    |descripción
+------------|---------|---------------
+
+#### Ejemplo
+```bash
+```
+### función /api/token/search
+busca **TOKENS** por un criterio dado
+
+#### URL
+```
+[GET] https://api.blockchainfue.com/api/token/search/
+```
+#### Parametros
+párametro   | tipo    |descripción
+------------|---------|---------------
+**criteria**  |JSON |  Criterio de busqueda
+
+#### Ejemplo
+```bash
 ```
