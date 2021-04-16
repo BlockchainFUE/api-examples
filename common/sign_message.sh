@@ -1,9 +1,10 @@
 #!/bin/bash
 #
-# Ejemplo de transferencia de un token por ID
+# Ejemplo de peticion de statis del API
 #
-TO=Dq8FxK99G2rCApHSVwMyH3Tezp7UsSr1brLAAtrsP1xb
-TXID=912fcb40ca7ade638e9480817c2850408dd72df955d5c565601b7b6d0062709e
+MESSAGE="La X marca el lugar"
+SIGN_KEY="6eucaVfDMdULxKyZwd6yReJjr6Z6ExbvCH3YuNK8pXtw"
+VERIFY_KEY="EmgoTZoHJCXk8DsSZ1b31wMoUmmc17193mM9oetQeFJa"
 curl -v -H "X-Public-Key: Dq8FxK99G2rCApHSVwMyH3Tezp7UsSr1brLAAtrsP1xb"\
         -H "X-Private-Key: Eeu9pjMvV97ebnf8km3goq8fN8AiVAKFMzoLDqP3bpka"\
         -H "X-Api-Network: test"\
@@ -11,6 +12,6 @@ curl -v -H "X-Public-Key: Dq8FxK99G2rCApHSVwMyH3Tezp7UsSr1brLAAtrsP1xb"\
         -H "X-App-Key: 4340472499d21403cd7de3da10bf8c08142f926e3ae076c4687b95543fd84600" \
         -H "Content-Type: application/json"\
         -H "Accept: application/json"\
-        -X PUT \
-        --data  "{\"id\":\"$TXID\",\"to\":\"$TO\",\"amount\":1}" \
-        https://bcf-api-v2.blockchainfue.com/api/asset
+        -X POST --data "{\"message\":\"$MESSAGE\",\"sign_key\":\"$SIGN_KEY\",\"verify_key\":\"$VERIFY_KEY\"}"\
+        https://bcf-api-v2.blockchainfue.com/api/did/sign
+         
