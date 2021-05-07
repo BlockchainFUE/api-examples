@@ -2,10 +2,10 @@
 #
 # Ejemplo de peticion de statis del API
 #
-MESSAGE="UM0W3DoYL1Fmo7GPFalMwls/7Cj6JhHVqv5ZrhRYbEYpwJTv+Q17O9KXgpPCMvyLwJv5e8NQpc2zVoau9Fx3"
-NONCE="xzPBjcyfpgtAyUNSZtS7hgTifpd0GL58"
+MESSAGE="D6aYnIlAf7rdJpyuvUEJ/0H9meN+XSY9rC3b1PfwbGr0r78SDQt/jiAbsw=="
+NONCE="XDd12rfjxYeRr9jljt6jjArKXp95mEZL"
 PRIVATE_KEY="6eucaVfDMdULxKyZwd6yReJjr6Z6ExbvCH3YuNK8pXtw"
-PUBLIC_KEY="EmgoTZoHJCXk8DsSZ1b31wMoUmmc17193mM9oetQeFJa"
+PUBLIC_KEY="DSN8Vq2jK1xepbMKuDoMjoZ63EudfF3BBogip3TV6fYE"
 curl -v -H "X-Public-Key: Dq8FxK99G2rCApHSVwMyH3Tezp7UsSr1brLAAtrsP1xb"\
         -H "X-Private-Key: Eeu9pjMvV97ebnf8km3goq8fN8AiVAKFMzoLDqP3bpka"\
         -H "X-Api-Network: test"\

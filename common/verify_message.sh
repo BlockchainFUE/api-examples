@@ -2,8 +2,8 @@
 #
 # Ejemplo de peticion de statis del API
 #
-MESSAGE="q1Xcqd1Z9wq7WwJJ8tRujdcX5u08TjGhzK2SPPSjlLatzU3Tgx8wvReRxfqTa1miQW2b01R9TekK6kLEkUi9BExhIFggbWFyY2EgZWwgbHVnYXI="
-VERIFY_KEY="EmgoTZoHJCXk8DsSZ1b31wMoUmmc17193mM9oetQeFJa"
+MESSAGE="MigpjDA2Ft10qs5cCbO7QXN3BHpbX//kyn23Xa38SdVUn8VXCRBxa5QxTjxs/QbYEbX+4DuH0rnJgNMwBh9cAkhvbGEgUm9iZXJ0byE="
+VERIFY_KEY="EmgoTZoHJCXk8DsSZ1b31wMoUmmc17193mM9oetQeFJb"
 curl -v -H "X-Public-Key: Dq8FxK99G2rCApHSVwMyH3Tezp7UsSr1brLAAtrsP1xb"\
         -H "X-Private-Key: Eeu9pjMvV97ebnf8km3goq8fN8AiVAKFMzoLDqP3bpka"\
         -H "X-Api-Network: test"\
