@@ -13,5 +13,5 @@ curl -v -H "X-Public-Key: Dq8FxK99G2rCApHSVwMyH3Tezp7UsSr1brLAAtrsP1xb"\
         -H "Content-Type: application/json"\
         -H "Accept: application/json"\
         -X POST --data "{\"message\":\"$MESSAGE\",\"from_private_key\":\"$PRIVATE_KEY\",\"to_public_key\":\"$PUBLIC_KEY\"}"\
-        https://bcf-api-v2.blockchainfue.com/api/did/encrypt
+        https://api.blockchainfue.com/api/did/encrypt
          

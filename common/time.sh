@@ -9,5 +9,5 @@ curl -v -H "X-Public-Key: 3UXnZugUbMGKBwEGyt1HH6Z1LC9PiyyX3uSvGDNkqRth"\
         -H "X-App-Key: 4340472499d21403cd7de3da10bf8c08142f926e3ae076c4687b95543fd84600" \
         -H "Content-Type: application/json"\
         -H "Accept: application/json"\
-        https://bcf-api-v2.blockchainfue.com/api/system/time
+        https://api.blockchainfue.com/api/system/time
          

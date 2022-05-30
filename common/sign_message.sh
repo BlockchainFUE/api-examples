@@ -13,6 +13,6 @@ curl -v -H "X-Public-Key: Dq8FxK99G2rCApHSVwMyH3Tezp7UsSr1brLAAtrsP1xb"\
         -H "Content-Type: application/json"\
         -H "Accept: application/json"\
         -X POST --data "{\"message\":\"$MESSAGE\",\"sign_key\":\"$SIGN_KEY\",\"verify_key\":\"$VERIFY_KEY\"}"\
-        https://bcf-api-v2.blockchainfue.com/api/did/sign
+        https://api.blockchainfue.com/api/did/sign
          
 

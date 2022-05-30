@@ -11,6 +11,6 @@ curl -v -H "X-Public-Key: Dq8FxK99G2rCApHSVwMyH3Tezp7UsSr1brLAAtrsP1xb"\
         -H "Content-Type: application/json"\
         -H "Accept: application/json"\
         -X POST --data "{\"asset\":{\"data\":{\"type\":\"test-votacion\",\"name\":\"votacion001\",\"test\":true,\"amount\":100}}}"\
-        https://bcf-api-v2.blockchainfue.com/api/asset
+        https://api.blockchainfue.com/api/asset
 
 

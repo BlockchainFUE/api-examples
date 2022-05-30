@@ -9,6 +9,6 @@ curl -v -H "X-Api-Network: test"\
         -H "Content-Type: application/json"\
         -H "Accept: application/json"\
         -X POST --data "{\"asset\":{\"data\":{\"type\":\"test-asset\",\"name\":\"test001\",\"test\":true,\"app\":\"curl\"}}}"\
-        https://bcf-api-v2.blockchainfue.com/api/asset
+        https://api.blockchainfue.com/api/asset
 
 

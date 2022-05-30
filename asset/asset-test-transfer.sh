@@ -14,4 +14,4 @@ curl -v -H "X-Public-Key: Dq8FxK99G2rCApHSVwMyH3Tezp7UsSr1brLAAtrsP1xb"\
         -H "Accept: application/json"\
         -X PUT \
         --data  "{\"id\":\"$TXID\",\"to\":\"$TO\"}" \
-        https://bcf-api-v2.blockchainfue.com/api/asset
+        https://api.blockchainfue.com/api/asset
